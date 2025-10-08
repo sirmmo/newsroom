@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-pjci%75aq=!va=uqh%pfha)j7)lacv8hc($a)ru1px5!w*!gu+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["api.infoboard.xyz", "observer.infoboard.xyz"]
 
 
 # Application definition
