@@ -10,7 +10,6 @@ NEWSPAPER = "0f98ca4b-3213-4d66-98a0-33f349a05023"
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        Article.objects.filter(newspaper_id=NEWSPAPER).delete()
         page = requests.get('https://www.bbc.com/news').content
         ppage = bs(page).find_all(attrs={"data-testid":"anchor-inner-wrapper"})
         for p in ppage:

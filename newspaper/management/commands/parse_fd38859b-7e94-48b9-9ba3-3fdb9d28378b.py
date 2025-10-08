@@ -8,7 +8,6 @@ from newspaper.models import *
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        Article.objects.filter(newspaper_id="fd38859b-7e94-48b9-9ba3-3fdb9d28378b").delete()
         page = requests.get('https://www.repubblica.it').content
         ppage = bs(page).find_all(class_="block__item")
         for p in ppage:

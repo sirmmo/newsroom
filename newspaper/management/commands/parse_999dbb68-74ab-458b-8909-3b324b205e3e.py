@@ -8,7 +8,6 @@ NEWSPAPER = "999dbb68-74ab-458b-8909-3b324b205e3e"
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        Article.objects.filter(newspaper_id=NEWSPAPER).delete()
         page = requests.get('https://www.repubblica.it').content
         ppage = bs(page).find_all(class_="block__item")
         for p in ppage:

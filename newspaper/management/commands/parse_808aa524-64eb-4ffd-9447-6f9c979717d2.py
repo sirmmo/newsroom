@@ -9,7 +9,6 @@ NEWSPAPER = "808aa524-64eb-4ffd-9447-6f9c979717d2"
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        Article.objects.filter(newspaper_id=NEWSPAPER).delete()
         for pages in [
             "https://www.ilpost.it",
             "https://www.ilpost.it/italia/",
