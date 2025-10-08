@@ -13,6 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-run python manage.py migrate
+# Custom entrypoint to handle migrations properly
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["granian", "--interface", "asgi", "newsroom.asgi:application", "--host", "0.0.0.0", "--port", "80"]

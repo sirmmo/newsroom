@@ -8,8 +8,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('coverage', '0001_initial'),
-        ('events', '0002_auto_20251003_2028'),
-        ('newspaper', '0009_articleanalysis'),
     ]
 
     operations = [
