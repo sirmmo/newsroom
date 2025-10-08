@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "newspaper",
+    "events",
+    "coverage",
+
 ]
 
 MIDDLEWARE = [
@@ -76,6 +80,7 @@ WSGI_APPLICATION = 'newsroom.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
     
+import dj_database_url
 
 DATABASES = {
     'default': {
