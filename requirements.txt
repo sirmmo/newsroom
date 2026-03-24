@@ -26,7 +26,7 @@ Hypercorn==0.17.3
 hyperframe==6.1.0
 idna==3.10
 injector==0.22.0
-ollama==0.6.0
+openai>=1.0.0
 priority==2.0.0
 psycopg2-binary==2.9.10
 pycparser==2.23

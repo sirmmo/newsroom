@@ -1,29 +1,20 @@
-#BBC
+from django.core.management.base import BaseCommand
+from openai import OpenAI
+import os
 
+DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
 
-from django.core.management.base import BaseCommand, CommandError
-import requests
-from newspaper.models import * 
-
-import ollama
-
-import json
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        base_url = os.environ.get("OPENAI_BASE_URL", DEFAULT_BASE_URL)
 
-        oc = ollama.Client(host="http://51.15.160.236:11434")
+        client = OpenAI(
+            base_url=base_url,
+            api_key=os.environ.get("OPENAI_API_KEY", ""),
+        )
 
-        models = oc.list()
-        avail_models = []
-        for m in models.models:
-            avail_models.append(m.model)
-
-        req_models = []
-        gen_models = []
-        for aat in ArticleAnalysisTool.objects.all():
-            if aat.model not in avail_models:
-                oc.pull(aat.model)
-            if aat.internal_name not in avail_models:
-                oc.create(model=aat.internal_name, from_=aat.model, system=aat.system_prompt)
-            
+        self.stdout.write(f"Connected to {base_url}")
+        models = client.models.list()
+        for m in models.data:
+            self.stdout.write(f"  {m.id}")
