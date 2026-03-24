@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-pjci%75aq=!va=uqh%pfha)j7)lacv8hc($a)ru1px5!w*!gu+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["api.infoboard.xyz", "observer.infoboard.xyz"]
+ALLOWED_HOSTS = ["api.infoboard.xyz", "observer.infoboard.xyz", "statuesque-zabaione-ca7cad.netlify.app", "infoboard.xyz", "www.infoboard.xyz"]
 
 
 # Application definition
@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple_history',
+    'ninja_jwt',
+    "corsheaders",
     "newspaper",
     "events",
     "coverage",
@@ -49,6 +52,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    'simple_history.middleware.HistoryRequestMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -140,3 +145,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+CORS_ALLOWED_ORIGINS = [
+    "https://api.infoboard.xyz",
+    "https://www.infoboard.xyz",
+    "http://localhost:27922",
+    "http://localhost:4200",
+] + ["https://"+a for a in ALLOWED_HOSTS]
+

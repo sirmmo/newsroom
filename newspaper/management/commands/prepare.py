@@ -24,6 +24,6 @@ class Command(BaseCommand):
         for aat in ArticleAnalysisTool.objects.all():
             if aat.model not in avail_models:
                 oc.pull(aat.model)
-            if at.internal_name not in avail_models:
+            if aat.internal_name not in avail_models:
                 oc.create(model=aat.internal_name, from_=aat.model, system=aat.system_prompt)
             
