@@ -113,3 +113,12 @@ Uses `granian` as the ASGI server and `whitenoise` for static files:
 python manage.py collectstatic
 granian newsroom.asgi:application
 ```
+
+## Newsroom Dashboard
+Newsroom Dashboard is the interface for the whole newsroom analysis tool, and offers a few visualization options based on the elements collected by the analysis tools.
+<img width="1280" height="734" alt="image" src="https://github.com/user-attachments/assets/e027fdef-ef5c-47b3-99c2-2c1519a62d63" />
+
+It also offers the possibility to edit the code for the scraping directly from the interface
+<img width="1280" height="838" alt="image" src="https://github.com/user-attachments/assets/91a68174-e715-4336-a249-792ef49c175e" />
+
+
